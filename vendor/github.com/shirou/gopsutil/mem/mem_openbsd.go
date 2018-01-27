@@ -7,8 +7,9 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
-	"github.com/shirou/gopsutil/internal/common"
 	"os/exec"
+
+	"github.com/shirou/gopsutil/internal/common"
 )
 
 func GetPageSize() (uint64, error) {

@@ -25,7 +25,6 @@ import (
 	"strings"
 
 	"github.com/sirupsen/logrus"
-	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 // setSyslogFormatter is nil if the target architecture does not support syslog.
