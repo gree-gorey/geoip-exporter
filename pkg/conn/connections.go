@@ -1,3 +1,6 @@
+// Package conn implements function for collecting
+// active TCP connections.
+
 package conn
 
 import (
@@ -7,10 +10,12 @@ import (
 	"github.com/shirou/gopsutil/net"
 )
 
+// Type Connections stores map of active connections: country code -> number of connections.
 type Connections struct {
 	ConnectionsByCode map[string]int `json:"connections_by_code"`
 }
 
+// Function RunJob retrieves active TCP connections.
 func (c *Connections) RunJob(p *Params) {
 	if p.UseWg {
 		defer p.Wg.Done()
@@ -18,6 +23,7 @@ func (c *Connections) RunJob(p *Params) {
 	c.GetActiveConnections()
 }
 
+// Function GetActiveConnections retrieves active TCP connections.
 func (c *Connections) GetActiveConnections() {
 
 	cs, err := net.Connections("tcp")

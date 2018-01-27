@@ -1,3 +1,6 @@
+// Package geo implements function for searching
+// for a country code by IP address.
+
 package geo
 
 import (
@@ -7,6 +10,7 @@ import (
 	"net/http"
 )
 
+// Type GeoIP stores whois info.
 type GeoIP struct {
 	Ip          string  `json:""`
 	CountryCode string  `json:"country_code"`
@@ -29,6 +33,7 @@ var (
 	body     []byte
 )
 
+// Function GetCode gets country code by IP address.
 func GetCode(address string) string {
 
 	response, err = http.Get("https://freegeoip.net/json/" + address)
