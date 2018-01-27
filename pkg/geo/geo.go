@@ -30,13 +30,13 @@ var (
 )
 
 func GetCode(address string) string {
-	
+
 	response, err = http.Get("https://freegeoip.net/json/" + address)
 	if err != nil {
 		fmt.Println(err)
 	}
 	defer response.Body.Close()
-	
+
 	body, err = ioutil.ReadAll(response.Body)
 	if err != nil {
 		fmt.Println(err)
