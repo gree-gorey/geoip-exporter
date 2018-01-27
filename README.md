@@ -1,5 +1,7 @@
 # GeoIP Prometheus exporter
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/gree-gorey/geoip-exporter)](https://goreportcard.com/report/github.com/gree-gorey/geoip-exporter)
+
 `github.com/gree-gorey/geoip-exporter`
 
 GeoIP exporter collects metrics about TCP-connections, 
