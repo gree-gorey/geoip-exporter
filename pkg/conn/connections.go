@@ -1,11 +1,10 @@
 package conn
 
 import (
-	"encoding/json"
-	"fmt"
+	"log"
+
 	"github.com/gree-gorey/geoip-exporter/pkg/geo"
 	"github.com/shirou/gopsutil/net"
-	"log"
 )
 
 type Connections struct {
@@ -28,7 +27,8 @@ func (c *Connections) GetActiveConnections() {
 
 	c.ConnectionsByCode = make(map[string]int)
 	for _, conn := range cs {
-		if (conn.Status == "ESTABLISHED") && (conn.Raddr.IP != "127.0.0.1") {
+		if (conn.Status == "ESTABLISHED") && (conn.Raddr.IP != "127.0.0.1") &&
+			(conn.Raddr.IP != "104.31.10.172") && (conn.Raddr.IP != "104.31.11.172") {
 			code := geo.GetCode(conn.Raddr.IP)
 			if code != "" {
 				_, ok := c.ConnectionsByCode[code]
@@ -41,11 +41,5 @@ func (c *Connections) GetActiveConnections() {
 		}
 
 	}
-
-	ser, err := json.Marshal(c)
-	if err != nil {
-		log.Println(err)
-	}
-	fmt.Println(string(ser))
 
 }
