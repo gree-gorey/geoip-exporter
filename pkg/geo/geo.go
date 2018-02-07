@@ -34,23 +34,25 @@ var (
 )
 
 // Function GetCode gets country code by IP address.
-func GetCode(address string) string {
-
+func GetCode(address string) (string, error) {
 	response, err = http.Get("https://freegeoip.net/json/" + address)
 	if err != nil {
 		fmt.Println(err)
+		return "", err
 	}
 	defer response.Body.Close()
 
 	body, err = ioutil.ReadAll(response.Body)
 	if err != nil {
 		fmt.Println(err)
+		return "", err
 	}
 
 	err = json.Unmarshal(body, &geo)
 	if err != nil {
 		fmt.Println(err)
+		return "", err
 	}
 
-	return geo.CountryCode
+	return geo.CountryCode, nil
 }

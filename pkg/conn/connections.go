@@ -35,8 +35,8 @@ func (c *Connections) GetActiveConnections() {
 	for _, conn := range cs {
 		if (conn.Status == "ESTABLISHED") && (conn.Raddr.IP != "127.0.0.1") &&
 			(conn.Raddr.IP != "104.31.10.172") && (conn.Raddr.IP != "104.31.11.172") {
-			code := geo.GetCode(conn.Raddr.IP)
-			if code != "" {
+			code, err := geo.GetCode(conn.Raddr.IP)
+			if code != "" && err == nil {
 				_, ok := c.ConnectionsByCode[code]
 				if ok == true {
 					c.ConnectionsByCode[code] += 1
