@@ -43,7 +43,7 @@ $ mv geoip-exporter /usr/local/bin
 ```
 
 Create service:
-```shell
+```console
 # cat << GEO > /etc/systemd/system/geoip-exporter.service
 [Unit]
 Description=Geo IP exporter for Prometheus
