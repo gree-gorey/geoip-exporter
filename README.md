@@ -32,7 +32,7 @@ Example usage:
 $ ./geoip-exporter --interval=10 --web.listen-address=127.0.0.1:9400 --blacklist=104.31.10.172,104.31.11.172 --debug
 ```
 
-### Quick start guide with Grafana
+## Quick start guide with Grafana
 
 Download latest release:
 ```bash
@@ -43,7 +43,7 @@ $ mv geoip-exporter /usr/local/bin
 ```
 
 Create service:
-```bash
+```shell
 # cat << GEO > /etc/systemd/system/geoip-exporter.service
 [Unit]
 Description=Geo IP exporter for Prometheus
