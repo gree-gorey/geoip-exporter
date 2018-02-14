@@ -8,7 +8,8 @@ GeoIP exporter collects metrics about TCP-connections,
 locates remote IP-address and exposes metrics to Prometheus 
 via `/metrics` endpoint.
 
-Example visualization using Grafana:
+Example visualization using Grafana:  
+
 ![map](https://raw.githubusercontent.com/gree-gorey/geoip-exporter/master/static/map.png "map")
 
 ### Usage
@@ -29,15 +30,21 @@ Available command-line options:
 
 Example usage:
 ```console
-$ ./geoip-exporter --interval=10 --web.listen-address=127.0.0.1:9400 --blacklist=104.31.10.172,104.31.11.172 --debug
+$ ./geoip-exporter --interval=10 --web.listen-address=127.0.0.1:9400 --blacklist="104.31.10.172,104.31.11.172" --debug
 ```
 
 ## Quick start guide with Grafana
 
+### 1. Run geoip-exporter
+
 Download latest release:
 ```console
 $ cd /tmp
-$ wget https://github.com/gree-gorey/geoip-exporter/releases
+$ curl -s https://api.github.com/repos/gree-gorey/geoip-exporter/releases/latest \
+| grep "browser_download_url" \
+| cut -d : -f 2,3 \
+| tr -d \" \
+| wget -qi - -O geoip-exporter
 $ chmod +x geoip-exporter
 $ mv geoip-exporter /usr/local/bin
 ```
@@ -69,6 +76,28 @@ tcp        0      0 127.0.0.1:9300        0.0.0.0:*               LISTEN      21
 $ curl -s 127.0.0.1:9300/metrics | grep ^job_location
 job_location{location="US"} 1
 ```
+
+### 2. Tell Prometheus to collect metrics from geoip-exporter
+
+Change Prometheus configuration file and add the following lines:
+```
+  - job_name: 'GeoIPExporter'
+    scrape_interval: 10s
+    static_configs:
+      - targets: ['127.0.0.1:9300']
+```
+
+Then reload Proetheus:
+```console
+# pgrep "^prometheus$" | xargs -i kill -HUP {}
+```
+
+Go to Prometheus UI and check that it collects metrics:  
+
+![map](https://raw.githubusercontent.com/gree-gorey/geoip-exporter/master/static/prom.png "map")
+
+
+### 3. Setup Grafana plugin
 
 Then you need to install Worldmap Panel plugin for Grafana:
 ```console
