@@ -14,7 +14,7 @@ Example visualization using Grafana:
 ### Usage
 
 Available command-line options:
-```bash
+```console
 --blacklist string
     	Addresses blacklist to filter out from results (default "104.31.10.172,104.31.11.172")
 --debug
@@ -28,14 +28,14 @@ Available command-line options:
 ### Example
 
 Example usage:
-```bash
+```console
 $ ./geoip-exporter --interval=10 --web.listen-address=127.0.0.1:9400 --blacklist=104.31.10.172,104.31.11.172 --debug
 ```
 
 ## Quick start guide with Grafana
 
 Download latest release:
-```bash
+```console
 $ cd /tmp
 $ wget https://github.com/gree-gorey/geoip-exporter/releases
 $ chmod +x geoip-exporter
@@ -63,7 +63,7 @@ GEO
 ```
 
 Check that the service is running and send the responce:
-```bash
+```console
 $ netstat -plnt | grep 9300
 tcp        0      0 127.0.0.1:9300        0.0.0.0:*               LISTEN      2156/geoip-exporter
 $ curl -s 127.0.0.1:9300/metrics | grep ^job_location
@@ -71,7 +71,7 @@ job_location{location="US"} 1
 ```
 
 Then you need to install Worldmap Panel plugin for Grafana:
-```bash
+```console
 # grafana-cli plugins install grafana-worldmap-panel
 ```
 
@@ -85,11 +85,15 @@ Legend format:
 {{location}}
 ```
 Mark checkpoint *Instant*.  
+Your setting should look like this:  
+
 ![map](https://raw.githubusercontent.com/gree-gorey/geoip-exporter/master/static/wm1.png "map")
 
-Then go to the *Worldmap* tab and set up it as this:
+Then go to the *Worldmap* tab and set up it as this:  
+
 ![map](https://raw.githubusercontent.com/gree-gorey/geoip-exporter/master/static/wm2.png "map")
 
+From this point on your worldmap panel is ready.
 
 ### TODO
 
