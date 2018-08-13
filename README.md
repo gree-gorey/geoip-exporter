@@ -1,6 +1,8 @@
 # GeoIP Prometheus exporter
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/gree-gorey/geoip-exporter)](https://goreportcard.com/report/github.com/gree-gorey/geoip-exporter)
+[![Go Report Card](https://goreportcard.com/badge/github.com/gree-gorey/geoip-exporter)](https://goreportcard.com/report/github.com/gree-gorey/geoip-exporter)  
+[![](https://images.microbadger.com/badges/image/greegorey/geoip-exporter.svg)](https://microbadger.com/images/greegorey/geoip-exporter "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/greegorey/geoip-exporter.svg)](https://microbadger.com/images/greegorey/geoip-exporter "Get your own version badge on microbadger.com")
 
 `go get github.com/gree-gorey/geoip-exporter`
 
