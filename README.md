@@ -128,3 +128,4 @@ From this point on your worldmap panel is ready.
 
 - [X] Add command-line flags
 - [x] Add filter for IP addresses (blacklist)
+- [ ] Docker image
