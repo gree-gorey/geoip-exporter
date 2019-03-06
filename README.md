@@ -10,8 +10,8 @@ GeoIP exporter collects metrics about TCP-connections,
 locates remote IP-address and exposes metrics to Prometheus
 via `/metrics` endpoint.
 
-**Changed https://freegeoip.net/ for https://freegeoip.live/. Please be aware
-that it has hour limit of 10K requests**
+**Changed https://freegeoip.net/ to https://freegeoip.live/. Please be aware
+that API has a limit of 10K requests per hour**
 
 Example visualization using Grafana:  
 
