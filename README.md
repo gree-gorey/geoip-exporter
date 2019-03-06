@@ -41,7 +41,7 @@ $ ./geoip-exporter --interval=10 --web.listen-address=127.0.0.1:9400 \
 
 Example usage:
 ```console
-$ docker run -p 9300:9300 greegorey/geoip-exporter:2.0.0
+$ docker run -p 9300:9300 greegorey/geoip-exporter:0.2.0
 ```
 
 ## Quick start guide with Grafana
