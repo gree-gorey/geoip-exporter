@@ -6,8 +6,8 @@
 
 `go get github.com/gree-gorey/geoip-exporter`
 
-GeoIP exporter collects metrics about TCP-connections, 
-locates remote IP-address and exposes metrics to Prometheus 
+GeoIP exporter collects metrics about TCP-connections,
+locates remote IP-address and exposes metrics to Prometheus
 via `/metrics` endpoint.
 
 Example visualization using Grafana:  
@@ -18,21 +18,30 @@ Example visualization using Grafana:
 
 Available command-line options:
 ```console
---blacklist string
-    	Addresses blacklist to filter out from results (default "104.31.10.172,104.31.11.172")
---debug
-    Debug log level
---interval int
-    Interval fo metrics collection in seconds (default 10)
---web.listen-address string
-    Address on which to expose metrics (default ":9300")
+Usage of ./geoip-exporter:
+  -blacklist string
+    	Addresses blacklist to filter out from results
+  -debug
+    	Debug log level
+  -interval int
+    	Interval fo metrics collection in seconds (default 180)
+  -web.listen-address string
+    	Address on which to expose metrics (default ":9300")
 ```
 
 ### Example
 
 Example usage:
 ```console
-$ ./geoip-exporter --interval=10 --web.listen-address=127.0.0.1:9400 --blacklist="104.31.10.172,104.31.11.172" --debug
+$ ./geoip-exporter --interval=10 --web.listen-address=127.0.0.1:9400 \
+    --blacklist="8.8.8.8,4.4.4.4" --debug
+```
+
+### Docker quick start
+
+Example usage:
+```console
+$ docker run -p 9300:9300 greegorey/geoip-exporter:2.0.0
 ```
 
 ## Quick start guide with Grafana

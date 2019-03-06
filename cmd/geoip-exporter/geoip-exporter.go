@@ -25,8 +25,8 @@ var (
 
 func main() {
 	addr := flag.String("web.listen-address", ":9300", "Address on which to expose metrics")
-	interval := flag.Int("interval", 10, "Interval fo metrics collection in seconds")
-	blackList := flag.String("blacklist", "104.31.10.172,104.31.11.172", "Addresses blacklist to filter out from results")
+	interval := flag.Int("interval", 180, "Interval fo metrics collection in seconds")
+	blackList := flag.String("blacklist", "", "Addresses blacklist to filter out from results")
 	debug := flag.Bool("debug", false, "Debug log level")
 	flag.Parse()
 	prometheus.MustRegister(location)
