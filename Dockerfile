@@ -8,4 +8,4 @@ FROM alpine:3.7
 WORKDIR /root/
 RUN apk --no-cache add ca-certificates
 COPY --from=0 /go/src/github.com/gree-gorey/geoip-exporter/cmd/geoip-exporter/geoip-exporter .
-CMD ["./geoip-exporter", "--debug"]
+CMD ["./geoip-exporter", "--debug", "--interval=10"]
