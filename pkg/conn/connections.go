@@ -34,7 +34,7 @@ func (c *Connections) GetActiveConnections(blackList map[string]bool) {
 	c.ConnectionsByCode = make(map[string]int)
 	for _, conn := range cs {
 		if _, ok := blackList[conn.Raddr.IP]; !ok && (conn.Status == "ESTABLISHED") && (conn.Raddr.IP != "127.0.0.1") {
-			code, err := geo.GetCode(conn.Raddr.IP)
+			code, err := geo.GetCode("") //conn.Raddr.IP
 			if code != "" && err == nil {
 				_, ok := c.ConnectionsByCode[code]
 				if ok == true {
